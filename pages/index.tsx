@@ -1,4 +1,8 @@
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import {
+  BakeShadows,
+  OrbitControls,
+  PerspectiveCamera,
+} from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -27,19 +31,14 @@ const Home: NextPage = () => {
             <Background />
             <PerspectiveCamera
               makeDefault
-              position={[-5, 2.5, 4]}
+              position={[-2, 0.75, 0]}
               fov={50}
               far={1000}
               near={0.1}
             />
             <Model />
-            <ambientLight intensity={0.3} />
-            <directionalLight
-              position={[-10, 10, 10]}
-              intensity={0.7}
-              castShadow={true}
-            />
             <OrbitControls maxPolarAngle={Math.PI / 2} />
+            <BakeShadows />
           </Canvas>
         </Suspense>
       </div>
