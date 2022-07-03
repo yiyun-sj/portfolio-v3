@@ -22,26 +22,28 @@ const Home: NextPage = () => {
       </Head>
 
       <div>
-        <Suspense fallback={<h1>loading...</h1>}>
-          <Canvas
-            style={{ height: '100vh' }}
-            gl={{ preserveDrawingBuffer: true }}
-            shadows
-            dpr={[1, 1.5]}
-          >
+        <Canvas
+          style={{ height: '100vh' }}
+          gl={{ preserveDrawingBuffer: true }}
+          shadows
+          dpr={[1, 1.5]}
+        >
+          <Suspense fallback={null}>
             <Background />
-            <PerspectiveCamera
-              makeDefault
-              position={isMobile ? [-5.5, 1, 0] : [-2, 1, 0]}
-              fov={50}
-              far={1000}
-              near={0.1}
-            />
+          </Suspense>
+          <PerspectiveCamera
+            makeDefault
+            position={isMobile ? [-5.5, 1, 0] : [-2, 1, 0]}
+            fov={50}
+            far={1000}
+            near={0.1}
+          />
+          <Suspense fallback={null}>
             <Model />
-            <OrbitControls maxPolarAngle={Math.PI / 2} />
-            <BakeShadows />
-          </Canvas>
-        </Suspense>
+          </Suspense>
+          <OrbitControls maxPolarAngle={Math.PI / 2} />
+          <BakeShadows />
+        </Canvas>
       </div>
     </div>
   )
