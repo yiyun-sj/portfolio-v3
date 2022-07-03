@@ -3,8 +3,8 @@ import { MeshReflectorMaterial } from '@react-three/drei'
 export default function Background() {
   return (
     <>
-      <fog attach='fog' args={['#eeeeee', 1, 50]} />
-      <color attach='background' args={['#eeeeee']} />
+      <fog attach='fog' args={['#19022e', 1, 50]} />
+      <color attach='background' args={['#19022e']} />
       <mesh
         position={[0, -0.8, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -13,15 +13,15 @@ export default function Background() {
       >
         <planeGeometry args={[200, 200]} />
         <MeshReflectorMaterial
-          blur={[300, 100]}
+          blur={200}
           resolution={2048}
-          mixBlur={1}
-          mixStrength={40}
+          mixBlur={2}
+          mixStrength={20}
           roughness={1}
           depthScale={1.2}
           minDepthThreshold={0.4}
           maxDepthThreshold={1.4}
-          color='#101010'
+          color='#19022e'
           metalness={0.5}
           mirror={0}
         />

@@ -32,7 +32,7 @@ const Home: NextPage = () => {
             <Background />
             <PerspectiveCamera
               makeDefault
-              position={isMobile ? [-5.5, 1, 0] : [-2, 0.75, 0]}
+              position={isMobile ? [-5.5, 1, 0] : [-2, 1, 0]}
               fov={50}
               far={1000}
               near={0.1}
