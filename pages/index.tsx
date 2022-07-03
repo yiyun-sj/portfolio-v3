@@ -7,6 +7,7 @@ import { Canvas } from '@react-three/fiber'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Suspense } from 'react'
+import { isMobile } from 'react-device-detect'
 import Background from '../components/Background'
 import Model from '../components/Desk'
 import styles from '../styles/Home.module.css'
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
             <Background />
             <PerspectiveCamera
               makeDefault
-              position={[-2, 0.75, 0]}
+              position={isMobile ? [-5.5, 1, 0] : [-2, 0.75, 0]}
               fov={50}
               far={1000}
               near={0.1}
