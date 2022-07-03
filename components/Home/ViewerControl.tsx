@@ -1,9 +1,11 @@
 import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, IconButton, Kbd, Stack, Text } from '@chakra-ui/react'
 import { motion, useCycle } from 'framer-motion'
+import { isMobile } from 'react-device-detect'
 
 export default function ViewerControl() {
   const [isOpen, toggleOpen] = useCycle(true, false)
+  if (isMobile) return null
   return (
     <Box
       as={motion.div}
@@ -14,7 +16,7 @@ export default function ViewerControl() {
       right={0}
       m={4}
       borderRadius={4}
-      shadow='5px 5px 20px #888888'
+      shadow='0 0 20px white'
       rounded='md'
       bg='white'
       overflow='hidden'
@@ -33,7 +35,7 @@ export default function ViewerControl() {
               variant='ghost'
               onClick={() => toggleOpen()}
             />
-            <Text>Viewer Control</Text>
+            <Text>Viewer Controls</Text>
           </Box>
 
           <Stack pl={4}>

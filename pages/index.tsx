@@ -2,7 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import HomeCanvas from '../components/Home/HomeCanvas'
 import NameRole from '../components/Home/NameRole'
-import HomeOverlay from '../components/Home/ViewerControl'
+import SeeMore from '../components/Home/SeeMore'
+import ViewerControl from '../components/Home/ViewerControl'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -16,8 +17,9 @@ const Home: NextPage = () => {
 
       <main>
         <HomeCanvas />
-        <HomeOverlay />
+        <ViewerControl />
         <NameRole />
+        <SeeMore />
       </main>
     </div>
   )
