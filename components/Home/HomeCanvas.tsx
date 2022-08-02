@@ -12,7 +12,7 @@ import Background from './Background'
 export default function HomeCanvas() {
   return (
     <Canvas
-      style={{ height: '100vh' }}
+      style={{ height: '100%' }}
       gl={{ preserveDrawingBuffer: true }}
       shadows
       dpr={[1, 1.5]}
