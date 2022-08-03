@@ -10,19 +10,16 @@ export default function ViewerControl() {
     <Box
       as={motion.div}
       position='absolute'
-      w={64}
-      h={40}
       top={0}
       right={0}
       m={4}
-      borderRadius={4}
       shadow='0 0 20px white'
       rounded='md'
       bg='white'
       overflow='hidden'
       animate={
         isOpen
-          ? { padding: '8px' }
+          ? { borderRadius: '8px', width: 'max-content', height: 'max-content' }
           : { width: '40px', height: '40px', borderRadius: '20px' }
       }
     >
@@ -38,7 +35,7 @@ export default function ViewerControl() {
             <Text>Viewer Controls</Text>
           </Box>
 
-          <Stack pl={4}>
+          <Stack p={4} pt={0} whiteSpace='nowrap'>
             <Text>
               Angle: <Kbd>left click</Kbd> + <Kbd>drag</Kbd>
             </Text>
@@ -47,6 +44,9 @@ export default function ViewerControl() {
             </Text>
             <Text>
               Zoom: <Kbd>scroll wheel</Kbd>
+            </Text>
+            <Text>
+              Minify: <Kbd>escape</Kbd>
             </Text>
           </Stack>
         </>

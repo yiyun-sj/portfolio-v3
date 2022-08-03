@@ -1,6 +1,21 @@
 import { Box, Button } from '@chakra-ui/react'
+import { useCallback, useEffect } from 'react'
 
 export default function Minify({ handleMinify }: { handleMinify: () => void }) {
+  const onEscape = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape') handleMinify()
+    },
+    [handleMinify]
+  )
+
+  useEffect(() => {
+    document.addEventListener('keydown', onEscape)
+
+    return () => {
+      document.removeEventListener('keydown', onEscape)
+    }
+  }, [onEscape])
   return (
     <Box
       position='absolute'
