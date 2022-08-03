@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import {
   BakeShadows,
   OrbitControls,
@@ -14,27 +15,31 @@ export default function HomeCanvas({ isOpen }: { isOpen: boolean }) {
     ? ([-5.5, 1, 0] as Vector3)
     : ([-2, 1, 0] as Vector3)
   return (
-    <Canvas
-      style={{ height: '100%' }}
-      gl={{ preserveDrawingBuffer: true }}
-      shadows
-      dpr={[1, 1.5]}
-    >
-      <Suspense fallback={null}>
+    <Suspense fallback={<Box backgroundColor='white' w='100%' h='100%' />}>
+      <Canvas
+        style={{ height: '100%' }}
+        gl={{ preserveDrawingBuffer: true }}
+        shadows
+        dpr={[1, 1.5]}
+      >
         <Background />
-      </Suspense>
-      <PerspectiveCamera
-        makeDefault
-        position={isOpen ? position : [-3, 1, 0]}
-        fov={50}
-        far={1000}
-        near={0.1}
-      />
-      <Suspense fallback={null}>
+        <PerspectiveCamera
+          makeDefault
+          position={isOpen ? position : [-3, 1, 0]}
+          fov={50}
+          far={1000}
+          near={0.1}
+        />
         <Model />
-      </Suspense>
-      <OrbitControls maxPolarAngle={Math.PI / 2} autoRotate={!isOpen} />
-      <BakeShadows />
-    </Canvas>
+        <OrbitControls
+          maxPolarAngle={Math.PI / 2}
+          autoRotate={!isOpen}
+          enablePan={isOpen}
+          enableZoom={isOpen}
+          enableRotate={isOpen}
+        />
+        <BakeShadows />
+      </Canvas>
+    </Suspense>
   )
 }

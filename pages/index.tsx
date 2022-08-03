@@ -9,14 +9,7 @@ import ViewerControl from '../components/Home/ViewerControl'
 const Home: NextPage = () => {
   // const router = useRouter()
   const [isOpen, toggleOpen] = useCycle(false, true)
-  const handleMinify = () => {
-    // setTimeout(() => {
-    //   router.push('/hi')
-    // }, 750)
-  }
-  const handleMaximize = () => {
-    if (!isOpen) toggleOpen()
-  }
+
   const onEscape = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isOpen) toggleOpen()
@@ -28,6 +21,10 @@ const Home: NextPage = () => {
     document.addEventListener('keydown', onEscape)
     return () => document.removeEventListener('keydown', onEscape)
   }, [onEscape])
+
+  const handleMaximize = () => {
+    if (!isOpen) toggleOpen()
+  }
 
   return (
     <div>
@@ -51,15 +48,20 @@ const Home: NextPage = () => {
           onClick={handleMaximize}
           overflow='hidden'
           zIndex={5}
-          shadow={isOpen ? '' : '0 0 40px white'}
           animate={
             isOpen
-              ? { width: '100%', height: '100vh' }
+              ? {
+                  width: '100%',
+                  height: '100vh',
+                  borderRadius: 0,
+                  boxShadow: '',
+                }
               : {
                   width: 'clamp(100px, 15vw, 400px)',
                   aspectRatio: '1',
                   cursor: 'pointer',
                   borderRadius: '50%',
+                  boxShadow: '0 0 40px white',
                 }
           }
         >
