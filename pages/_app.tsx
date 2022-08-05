@@ -5,8 +5,6 @@ import Head from 'next/head'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useGLTF.preload('/Desk.glb')
-
   return (
     <ChakraProvider>
       <Head>
@@ -16,5 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ChakraProvider>
   )
 }
+
+useGLTF.preload('/Desk.glb')
 
 export default MyApp
