@@ -9,6 +9,7 @@ import ViewerControl from '../components/Home/ViewerControl'
 
 export async function getStaticProps() {
   useGLTF.preload('/Desk.glb')
+  return {}
 }
 
 const Home: NextPage = () => {
