@@ -1,10 +1,15 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
+import { useGLTF } from '@react-three/drei'
 import { motion, useCycle } from 'framer-motion'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useCallback, useEffect } from 'react'
 import HomeCanvas from '../components/Home/HomeCanvas'
 import ViewerControl from '../components/Home/ViewerControl'
+
+export async function getStaticProps() {
+  useGLTF.preload('/Desk.glb')
+}
 
 const Home: NextPage = () => {
   const [isOpen, toggleOpen] = useCycle(false, true)
@@ -76,6 +81,20 @@ const Home: NextPage = () => {
           {!isLoading && <HomeCanvas isOpen={isOpen} />}
           <ViewerControl handleMinify={handleToggleOpen} isShown={isOpen} />
         </Box>
+      </Box>
+
+      <Box position='absolute' top={0} left={0} m={4} textColor='white'>
+        <Text
+          fontFamily='sans-serif'
+          fontWeight='bold'
+          fontSize={88}
+          lineHeight={1}
+        >
+          YIYUN JIA
+        </Text>
+        <Text fontFamily='sans-serif' fontWeight='bold' fontSize={36}>
+          SOFTWARE DEVELOPER
+        </Text>
       </Box>
     </>
   )
