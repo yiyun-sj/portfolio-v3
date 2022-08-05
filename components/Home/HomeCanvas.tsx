@@ -7,8 +7,8 @@ import {
 import { Canvas, Vector3 } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { isMobile } from 'react-device-detect'
-import Model from '../Desk'
 import Background from './Background'
+import Model from './Desk'
 
 export default function HomeCanvas({ isOpen }: { isOpen: boolean }) {
   const position = isMobile

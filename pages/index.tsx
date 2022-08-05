@@ -7,14 +7,22 @@ import HomeCanvas from '../components/Home/HomeCanvas'
 import ViewerControl from '../components/Home/ViewerControl'
 
 const Home: NextPage = () => {
-  // const router = useRouter()
   const [isOpen, toggleOpen] = useCycle(false, true)
+  const [isLoading, toggleLoading] = useCycle(false, true)
+
+  const handleToggleOpen = useCallback(() => {
+    toggleLoading()
+    toggleOpen()
+    setTimeout(() => {
+      toggleLoading()
+    }, 1)
+  }, [toggleLoading, toggleOpen])
 
   const onEscape = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) toggleOpen()
+      if (event.key === 'Escape' && isOpen) handleToggleOpen()
     },
-    [isOpen, toggleOpen]
+    [isOpen, handleToggleOpen]
   )
 
   useEffect(() => {
@@ -23,15 +31,14 @@ const Home: NextPage = () => {
   }, [onEscape])
 
   const handleMaximize = () => {
-    if (!isOpen) toggleOpen()
+    if (!isOpen) handleToggleOpen()
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Yiyun Jia</title>
         <meta name='description' content='Student and Software Developer' />
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <Box
@@ -47,29 +54,30 @@ const Home: NextPage = () => {
           as={motion.div}
           onClick={handleMaximize}
           overflow='hidden'
-          zIndex={5}
+          zIndex={1}
+          boxShadow='0 0 40px white'
           animate={
             isOpen
               ? {
                   width: '100%',
                   height: '100vh',
                   borderRadius: 0,
-                  boxShadow: '',
+                  transition: { ease: 'easeInOut' },
                 }
               : {
-                  width: 'clamp(100px, 15vw, 400px)',
-                  aspectRatio: '1',
+                  width: 'clamp(100px, max(15vw, 20vh), 400px)',
+                  height: 'clamp(100px, max(15vw, 20vh), 400px)',
                   cursor: 'pointer',
                   borderRadius: '50%',
-                  boxShadow: '0 0 40px white',
+                  transition: { ease: 'easeInOut' },
                 }
           }
         >
-          <HomeCanvas isOpen={isOpen} />
-          {isOpen && <ViewerControl />}
+          {!isLoading && <HomeCanvas isOpen={isOpen} />}
+          <ViewerControl handleMinify={handleToggleOpen} isShown={isOpen} />
         </Box>
       </Box>
-    </div>
+    </>
   )
 }
 
