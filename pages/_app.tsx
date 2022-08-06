@@ -1,16 +1,8 @@
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  ChakraProvider,
-  Flex,
-  Image,
-  Spacer,
-} from '@chakra-ui/react'
+import { Box, ChakraProvider, Flex } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import { NavBar } from '../components/Shared'
 import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -34,21 +26,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         position='relative'
         direction='column'
       >
-        <Flex width='100%' align='center'>
-          <Image src='/logo.svg' w={8} ml={4} mt={2} alt='logo' />
-          <Spacer />
-          <Breadcrumb p={4} textColor='white'>
-            <BreadcrumbItem>
-              <BreadcrumbLink>Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink>About</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink>Projects</BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </Flex>
+        <NavBar />
         <Box position='relative' flexGrow={1}>
           <Component {...pageProps} />
         </Box>
