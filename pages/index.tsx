@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, Spacer } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { ChName, ContactIcons, Name, Role, Room } from '../components'
@@ -20,14 +20,11 @@ const Home: NextPage = () => {
         justify='space-evenly'
       >
         <Name />
-        <Flex
-          direction='row'
-          align='center'
-          justify='space-between'
-          width='100%'
-        >
+        <Flex direction='row' align='center' width='100%'>
           <ChName />
+          <Spacer />
           <Room />
+          <Spacer />
           <ContactIcons />
         </Flex>
         <Role />
