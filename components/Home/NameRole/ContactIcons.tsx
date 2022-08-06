@@ -1,4 +1,6 @@
 import { Flex, Icon, Link, Spacer } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import { isMobile } from 'react-device-detect'
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 const IconList = [
@@ -16,6 +18,11 @@ const IconList = [
 ]
 
 export function ContactIcons() {
+  const [isMobileDevice, setIsMobileDevice] = useState(false)
+  useEffect(() => {
+    setIsMobileDevice(isMobile)
+  }, [])
+  if (isMobileDevice) return null
   return (
     <Flex direction='column' gap={4} padding={4}>
       <Spacer />

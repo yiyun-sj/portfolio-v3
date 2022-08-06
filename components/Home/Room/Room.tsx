@@ -48,6 +48,7 @@ export function Room() {
       boxShadow='0 0 40px white'
       borderRadius='50%'
       backgroundColor='#030106'
+      zIndex={1}
       animate={
         isOpen
           ? {
