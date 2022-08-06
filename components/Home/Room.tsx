@@ -34,18 +34,17 @@ export default function Room() {
   return (
     <Box
       display='flex'
+      position='absolute'
       justifyContent='center'
       alignItems='center'
       w='100%'
-      h='100vh'
-      zIndex={-1}
-      backgroundColor='#030106'
+      h='100%'
     >
       <Box
         as={motion.div}
         onClick={handleMaximize}
         overflow='hidden'
-        zIndex={1}
+        zIndex={5}
         boxShadow='0 0 40px white'
         borderRadius='50%'
         animate={
