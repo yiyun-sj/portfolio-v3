@@ -20,7 +20,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Flex
-        w='100vw'
+        w='100%'
         minH={height}
         backgroundColor='#030106'
         position='relative'

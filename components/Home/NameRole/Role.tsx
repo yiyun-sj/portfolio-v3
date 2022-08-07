@@ -15,8 +15,8 @@ export function Role() {
       textColor='white'
       textAlign='center'
     >
-      STUDENT {isMobileDevice ? <br /> : '- '}
-      DEVELOPER {isMobileDevice ? <br /> : '- '}
+      STUDENT{isMobileDevice ? <br /> : ' - '}
+      DEVELOPER{isMobileDevice ? <br /> : ' - '}
       MUSICIAN
     </Text>
   )

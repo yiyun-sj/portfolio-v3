@@ -43,6 +43,7 @@ export function Room() {
   return (
     <Box
       as={motion.div}
+      display='flex'
       onClick={handleMaximize}
       overflow='hidden'
       boxShadow='0 0 40px white'
@@ -52,11 +53,9 @@ export function Room() {
       animate={
         isOpen
           ? {
-              position: 'fixed',
               width: '100%',
               height,
               borderRadius: 0,
-              top: 0,
               transition: { ease: 'easeInOut' },
             }
           : {
@@ -66,6 +65,17 @@ export function Room() {
               borderRadius: '50%',
               transition: { ease: 'easeInOut' },
             }
+      }
+      style={
+        isOpen
+          ? {
+              position: 'fixed',
+              left: '50%',
+              top: '50%',
+              translateX: '-50%',
+              translateY: '-50%',
+            }
+          : {}
       }
     >
       {!isLoading && <HomeCanvas isOpen={isOpen} />}
