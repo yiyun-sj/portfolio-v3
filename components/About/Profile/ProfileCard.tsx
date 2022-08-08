@@ -68,8 +68,8 @@ export function ProfileCard() {
           />
         </AspectRatio>
         <Accordion
-          allowMultiple
-          defaultIndex={isMobile ? undefined : basicInfos.map((_, i) => i)}
+          allowMultiple={isMobile ? false : true}
+          defaultIndex={isMobile ? [0] : basicInfos.map((_, i) => i)}
         >
           {basicInfos.map(({ title, titleDesc, description }) => (
             <AccordionItem key={title}>
