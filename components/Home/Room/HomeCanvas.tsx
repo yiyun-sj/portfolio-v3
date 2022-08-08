@@ -5,17 +5,15 @@ import {
   PerspectiveCamera,
 } from '@react-three/drei'
 import { Canvas, Vector3 } from '@react-three/fiber'
-import { Suspense, useEffect, useState } from 'react'
-import { isMobile } from 'react-device-detect'
+import { Suspense } from 'react'
+import { useIsMobile } from '../../../hooks'
 import Background from './Background'
 import Model from './Desk'
 
 export default function HomeCanvas({ isOpen }: { isOpen: boolean }) {
-  const [isMobileDevice, setIsMobileDevice] = useState(false)
-  useEffect(() => {
-    setIsMobileDevice(isMobile)
-  }, [])
-  const position = isMobileDevice
+  const { isMobile } = useIsMobile()
+
+  const position = isMobile
     ? ([-5.5, 1, 0] as Vector3)
     : ([-2, 1, 0] as Vector3)
   return (

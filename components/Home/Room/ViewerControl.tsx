@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/icons'
 import { Box, IconButton, Kbd, Stack, Text } from '@chakra-ui/react'
 import { motion, useCycle } from 'framer-motion'
-import { isMobile } from 'react-device-detect'
+import { useIsMobile } from '../../../hooks'
 
 export default function ViewerControl({
   handleMinify,
@@ -15,6 +15,8 @@ export default function ViewerControl({
   isShown: boolean
 }) {
   const [isOpen, toggleOpen] = useCycle(true, false)
+  const { isMobile } = useIsMobile()
+
   if (!isShown) return null
   return (
     <>

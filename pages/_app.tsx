@@ -1,19 +1,13 @@
 import { Box, ChakraProvider, Flex } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
 import { NavBar } from '../components/Shared'
+import { useWindowHeight } from '../hooks'
 import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const [height, setHeight] = useState<string | number>('100vh')
-  useEffect(() => {
-    setHeight(window.innerHeight)
-    window.addEventListener('resize', () => setHeight(window.innerHeight))
-    return window.removeEventListener('resize', () =>
-      setHeight(window.innerHeight)
-    )
-  }, [])
+  const { height } = useWindowHeight()
+
   return (
     <ChakraProvider>
       <Head>
@@ -21,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Flex
         w='100%'
-        minH={height}
+        minH={height ?? '100vh'}
         backgroundColor='#030106'
         position='relative'
         direction='column'

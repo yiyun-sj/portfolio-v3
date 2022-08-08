@@ -1,13 +1,10 @@
 import { Flex, Spacer, Text } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { isMobile } from 'react-device-detect'
+import { useIsMobile } from '../../../hooks'
 
 export function ChName() {
-  const [isMobileDevice, setIsMobileDevice] = useState(false)
-  useEffect(() => {
-    setIsMobileDevice(isMobile)
-  }, [])
-  if (isMobileDevice) return null
+  const { isMobile } = useIsMobile()
+
+  if (isMobile) return null
   return (
     <Flex direction='column' gap={4} padding={4}>
       <Spacer />
