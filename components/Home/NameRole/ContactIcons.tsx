@@ -25,7 +25,13 @@ export function ContactIcons() {
       <Spacer />
       {IconList.map((icon) => (
         <Link key={icon.name} href={icon.href} isExternal>
-          <Icon as={icon.icon} w={8} h={8} color='white' />
+          <Icon
+            as={icon.icon}
+            w={8}
+            h={8}
+            color='white'
+            _hover={{ color: 'blue.200' }}
+          />
         </Link>
       ))}
       <Spacer />

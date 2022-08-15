@@ -15,8 +15,9 @@ import { useEffect } from 'react'
 const NavList = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Projects', href: '/projects' },
+  { name: 'Works', href: '/works' },
   { name: 'Music', href: '/music' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export function NavBar() {

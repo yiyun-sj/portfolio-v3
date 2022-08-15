@@ -4,7 +4,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
-const Projects: NextPage = () => {
+const Works: NextPage = () => {
   const [isLoading, toggleIsLoading] = useCycle(false, true)
 
   return (
@@ -46,4 +46,4 @@ const Projects: NextPage = () => {
   )
 }
 
-export default Projects
+export default Works
