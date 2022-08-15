@@ -11,6 +11,7 @@ import { useCycle } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { useIsMobile } from '../../../hooks'
 
 const NavList = [
   { name: 'Home', href: '/' },
@@ -21,6 +22,7 @@ const NavList = [
 ]
 
 export function NavBar() {
+  const { isMobile } = useIsMobile()
   const { pathname, events } = useRouter()
   const [isLoading, toggleIsLoading] = useCycle(false, true)
 
@@ -57,16 +59,18 @@ export function NavBar() {
         zIndex={1}
         backgroundColor='inherit'
       >
-        <Link href='/'>
-          <Image
-            src='/logo.svg'
-            w={8}
-            mx={4}
-            my={2}
-            alt='logo'
-            cursor='pointer'
-          />
-        </Link>
+        {!isMobile && (
+          <Link href='/'>
+            <Image
+              src='/logo.svg'
+              w={8}
+              mx={4}
+              my={2}
+              alt='logo'
+              cursor='pointer'
+            />
+          </Link>
+        )}
 
         <Spacer />
         <Breadcrumb p={4} textColor='white'>

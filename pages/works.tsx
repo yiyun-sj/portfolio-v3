@@ -2,8 +2,10 @@ import { Box, Flex, Icon, Skeleton, Stack } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { FaRegCircle } from 'react-icons/fa'
+import { useIsMobile } from '../hooks'
 
 const Works: NextPage = () => {
+  const { isMobile } = useIsMobile()
   const staticList = [1, 2]
   return (
     <>
@@ -17,7 +19,7 @@ const Works: NextPage = () => {
           <Flex
             key={item}
             align='stretch'
-            direction={!(i % 2) ? 'row' : 'row-reverse'}
+            direction={!(i % 2) || isMobile ? 'row' : 'row-reverse'}
             gap={4}
           >
             <Box flex={1} />
@@ -46,10 +48,14 @@ const Works: NextPage = () => {
                 }
               />
             </Flex>
-            <Stack alignItems={!(i % 2) ? 'start' : 'end'} flex={1} py={8}>
-              <Skeleton w={80} h={8}></Skeleton>
-              <Skeleton w={80} h={8}></Skeleton>
-              <Skeleton w={80} h={8}></Skeleton>
+            <Stack
+              alignItems={!(i % 2) || isMobile ? 'start' : 'end'}
+              flex={1}
+              py={8}
+            >
+              <Skeleton w={60} h={8}></Skeleton>
+              <Skeleton w={60} h={8}></Skeleton>
+              <Skeleton w={60} h={8}></Skeleton>
             </Stack>
           </Flex>
         ))}
