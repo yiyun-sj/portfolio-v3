@@ -16,8 +16,8 @@ const Music: NextPage = () => {
       <Heading color='white' textAlign='center'>
         Covers:
       </Heading>
-      <Flex p={8} align='center' justify='center'>
-        <AspectRatio w={isMobile ? '100%' : '30%'} ratio={16 / 9}>
+      <Flex p={8} gap={8} justifyContent='center'>
+        <AspectRatio w={500} maxW='100%' ratio={16 / 9}>
           <iframe
             src='https://www.youtube.com/embed/aMyGvyxTSPI'
             title='傻子 - 林宥嘉 / Fool - Yoga Lin'

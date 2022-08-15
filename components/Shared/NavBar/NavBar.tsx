@@ -46,6 +46,7 @@ export function NavBar() {
           position='fixed'
           top={0}
           backgroundColor='transparent'
+          zIndex={2}
         />
       )}
       <Flex
