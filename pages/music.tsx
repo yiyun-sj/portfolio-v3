@@ -1,46 +1,31 @@
-import { Flex, Spinner, Stack, Text } from '@chakra-ui/react'
-import { useCycle } from 'framer-motion'
+import { AspectRatio, Flex, Heading } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
+import { useIsMobile } from '../hooks'
 
 const Music: NextPage = () => {
-  const [isLoading, toggleIsLoading] = useCycle(false, true)
+  const isMobile = useIsMobile()
 
   return (
     <>
       <Head>
-        <title>404 Not Found</title>
-        <meta name='description' content='404 Not Found' />
+        <title>Music - Yiyun Jia</title>
+        <meta name='description' content='About Me' />
       </Head>
 
-      <Flex
-        position='absolute'
-        w='100%'
-        h='100%'
-        align='center'
-        justify='center'
-      >
-        {isLoading ? (
-          <Spinner color='white' size='xl' />
-        ) : (
-          <Stack>
-            <Text fontWeight='bold' fontSize={36} textColor='white'>
-              404: Page Not Found
-            </Text>
-            <Link href='/'>
-              <Text
-                fontSize={18}
-                textColor='blue.200'
-                onClick={() => toggleIsLoading()}
-                cursor='pointer'
-                _hover={{ textColor: 'white' }}
-              >
-                Here&lsquo;s the way home
-              </Text>
-            </Link>
-          </Stack>
-        )}
+      <Heading color='white' textAlign='center'>
+        Covers:
+      </Heading>
+      <Flex p={8} align='center' justify='center'>
+        <AspectRatio w={isMobile ? '100%' : '30%'} ratio={16 / 9}>
+          <iframe
+            src='https://www.youtube.com/embed/aMyGvyxTSPI'
+            title='傻子 - 林宥嘉 / Fool - Yoga Lin'
+            frameBorder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          />
+        </AspectRatio>
       </Flex>
     </>
   )

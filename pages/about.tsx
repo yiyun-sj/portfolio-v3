@@ -7,7 +7,7 @@ const About: NextPage = () => {
   return (
     <>
       <Head>
-        <title>About Me</title>
+        <title>About Me - Yiyun Jia</title>
         <meta name='description' content='About Me' />
       </Head>
 
