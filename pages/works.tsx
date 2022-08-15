@@ -1,46 +1,58 @@
-import { Flex, Spinner, Stack, Text } from '@chakra-ui/react'
-import { useCycle } from 'framer-motion'
+import { Box, Flex, Icon, Skeleton, Stack } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
+import { FaRegCircle } from 'react-icons/fa'
 
 const Works: NextPage = () => {
-  const [isLoading, toggleIsLoading] = useCycle(false, true)
-
+  const staticList = [1, 2]
   return (
     <>
       <Head>
-        <title>404 Not Found</title>
-        <meta name='description' content='404 Not Found' />
+        <title>Works - Yiyun Jia</title>
+        <meta name='description' content='About Me' />
       </Head>
 
-      <Flex
-        position='absolute'
-        w='100%'
-        h='100%'
-        align='center'
-        justify='center'
-      >
-        {isLoading ? (
-          <Spinner color='white' size='xl' />
-        ) : (
-          <Stack>
-            <Text fontWeight='bold' fontSize={36} textColor='white'>
-              404: Page Not Found
-            </Text>
-            <Link href='/'>
-              <Text
-                fontSize={18}
-                textColor='blue.200'
-                onClick={() => toggleIsLoading()}
-                cursor='pointer'
-                _hover={{ textColor: 'white' }}
-              >
-                Here&lsquo;s the way home
-              </Text>
-            </Link>
-          </Stack>
-        )}
+      <Flex p={8} align='stretch' justify='center' direction='column'>
+        {staticList.map((item, i) => (
+          <Flex
+            key={item}
+            align='stretch'
+            direction={!(i % 2) ? 'row' : 'row-reverse'}
+            gap={4}
+          >
+            <Box flex={1} />
+            <Flex direction='column' align='center' gap={2}>
+              <Box
+                w={1}
+                flex={1}
+                backgroundColor='white'
+                bgGradient={!i ? 'linear(to-t, white, #030106)' : undefined}
+              />
+              <Icon
+                as={FaRegCircle}
+                w={8}
+                h={8}
+                color='white'
+                _hover={{ color: 'blue.200' }}
+              />
+              <Box
+                w={1}
+                flex={1}
+                backgroundColor='white'
+                bgGradient={
+                  i === staticList.length - 1
+                    ? 'linear(to-b, white, #030106)'
+                    : undefined
+                }
+              />
+            </Flex>
+            <Stack alignItems={!(i % 2) ? 'start' : 'end'} flex={1} py={8}>
+              <Skeleton w={80} h={8}></Skeleton>
+              <Skeleton w={80} h={8}></Skeleton>
+              <Skeleton w={80} h={8}></Skeleton>
+            </Stack>
+          </Flex>
+        ))}
       </Flex>
     </>
   )
