@@ -10,10 +10,10 @@ import {
   useClipboard,
   useToast,
 } from '@chakra-ui/react'
-import { useCycle } from 'framer-motion'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { useIsMobile } from '../hooks'
 
 const IconList = [
   { name: 'Github', icon: FaGithub, href: 'https://github.com/yiyun-sj' },
@@ -32,7 +32,7 @@ const IconList = [
 const email = 's32jia@uwaterloo.ca'
 
 const Contact: NextPage = () => {
-  const [isLoading, toggleIsLoading] = useCycle(false, true)
+  const { isMobile } = useIsMobile()
   const { onCopy } = useClipboard(email)
   const toast = useToast()
 
@@ -63,7 +63,12 @@ const Contact: NextPage = () => {
         direction='column'
         gap={4}
       >
-        <Text fontWeight='bold' fontSize={36} textColor='white'>
+        <Text
+          fontWeight='bold'
+          fontSize={isMobile ? 24 : 36}
+          textColor='white'
+          pb={4}
+        >
           Like what you see? Say hi!
         </Text>
         <Flex gap={4}>
@@ -83,7 +88,7 @@ const Contact: NextPage = () => {
           ))}
           <Spacer />
         </Flex>
-        <Text color='white' textDecor='underline' fontSize={18}>
+        <Text color='white' textDecor='underline' fontSize={18} pb={4}>
           or
         </Text>
         <Flex>
